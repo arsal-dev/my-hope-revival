@@ -1,0 +1,249 @@
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<section class="singlecoursesection">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="signlecoursetext text-center">
+                    <h1><?=$course['course_name']?> (<?=$course['duration'];?>)</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- main section -->
+<section class="mssignlecourse">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-8">
+
+                <!-- this only show on mobile -->
+                <div class="imagesanddetailscc">
+                    <div class="m-3">
+                        <?php if(count($batches) > 0){ ?>
+                        <div class="enrollbutton">
+                            <a href="<?=app_url()?>/course-registration/<?=$course['slug'];?>">
+                                ENROLL NOW
+                            </a>
+                        </div>
+                        <?php }else{ ?>
+                        <div style="background-color: #343A40; padding: 20px; color: white">
+                            Seats for Current Batch Are Full. Please Wait for Next Batch to Open.
+                        </div>
+                        <?php } ?>
+                        <div class="coursefeatures">
+                            <h4>Course Features</h4>
+                            <!-- features list -->
+                            <div class="featureslists">
+                                <p><i class="far fa-clock fa-1x"></i> Duration</p>
+                                <p><?=$course['duration'];?></p>
+                            </div>
+                            <div class="featureslists">
+                                <p><i class="fa fa-language"></i> Semesters</p>
+                                <p><?=$course['semester'];?></p>
+                            </div>
+                            <div class="featureslists lastfe">
+                                <p><i class="fas fa-money-bill-wave"></i> Fee</p>
+                                <p>Rs. <?=$course['fee'];?></p>
+                            </div>
+                            <!-- features list end -->
+                        </div>
+                        <div class="enrollbuttond">
+                            <a href="#leave">Give Us Feedback</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- only show on mobile end -->
+                <?php if($course['youtube_embed'] != ""){ ?>
+                <div class="course_video">
+                    <iframe width="100%" height="400px"
+                            src="https://www.youtube.com/embed/<?=$course['youtube_embed'];?>?rel=0" frameborder="0"
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                </div>
+                <?php } ?>
+                <div class="course_content mt-4">
+                    <div class="what-you-will">
+                        <h2 class="mt-2 learn-head">What will you learn?</h2>
+                        <div class="row">
+                            <?php $a=1; foreach($learn as $l){?>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="innerget">
+                                    <i class="fas check-icon-size"><?=$a++;?>.</i>
+                                    <p><?=$l['detail'];?></p>
+                                </div>
+                            </div>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+                        <div class="d-flex justify-content-between mt-4 mb-4">
+                            <table class="table custom-table" style="width: 70% !important;">
+                                <tr>
+                                    <td width="20%"><b>Fee:</b></td>
+                                    <td style="color: var(--main-color)"><?=number_format($course['fee']);?> <small>pkr</small></td>
+                                </tr>
+                                <tr>
+                                    <td><b>In words:</b></td>
+                                    <td><?=getPakCurrency($course['fee'])?></td>
+                                </tr>
+                            </table>
+                            <div>
+                                <?php if(count($batches) > 0){ ?>
+                                <a href="<?=app_url()?>/course-registration/<?=$course['slug'];?>"
+                                   class="btn btn-primary rounded-0">ENROLL NOW</a>
+                                <?php }else{ ?>
+                                Please Wait for Next Batch to Open.
+                                <?php } ?>
+                            </div>
+                        </div>
+                        <article class="main-text">
+                            <h2 class="mt-2 learn-head">Description</h2>
+                            <p><?=$course['course_description'];?></p>
+                        </article>
+                        <!-- students made -->
+                        <main class="student-made-box">
+                            <h2>Websites Our Students Made</h2>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <img src="<?=app_url()?>/assets/img/app course small real.jpg" class="img-fluid" alt="">
+                                </div>
+                                <div class="col-lg-4">
+                                   <img src="<?=app_url()?>/assets/img/app course small real.jpg" class="img-fluid" alt=""> 
+                                </div>
+                                <div class="col-lg-4">
+                                    <img src="<?=app_url()?>/assets/img/app course small real.jpg" class="img-fluid" alt="">
+                                </div>
+                            </div>
+                        </main>
+                        <!-- student made end -->
+                        <style>
+                            .courseinnerdown>ul>li{
+                                list-style: disc !important;
+                                margin-left: 40px;
+                            }
+                        </style>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="imagesanddetailsc" id="mycoursesidebar">
+                            <img src="<?=app_url()?>/getImage?i=<?=$course['id']?>&t=course" alt="Course image"
+                                 class="img-fluid "
+                                 width="100%">
+                            <div class="m-3">
+                                <div class="singlepricecourse">
+                                    <!-- <h3>Rs. 40,000</h3> -->
+                                </div>
+                                <?php if(count($batches) > 0){ ?>
+                                <div class="enrollbutton">
+                                    <a href="<?=app_url()?>/course-registration/<?=$course['slug'];?>">
+                                        ENROLL NOW
+                                    </a>
+                                </div>
+                                <?php }else{ ?>
+                                <div style="background-color: #343A40; padding: 20px; color: white">
+                                    Seats for Current Batch Are Full. Please Wait for Next Batch to Open.
+                                </div>
+                                <?php } ?>
+                                <div class="coursefeatures">
+                                    <h4 style=" color: white; padding: 15px">Course Features</h4>
+                                    <!-- features list -->
+                                    <div class="featureslists">
+                                        <p><i class="far fa-clock"></i> <b class="text-white">Duration</b></p>
+                                        <p><?=$course['duration'];?></p>
+                                    </div>
+                                    <div class="featureslists">
+                                        <p><i class="fa fa-language"></i> <b class="text-white">Semesters</b></p>
+                                        <p><?=$course['semester'];?></p>
+                                    </div>
+                                    <div class="featureslists lastfe">
+                                        <p><i class="fas fa-money-bill-wave"></i> <b class="text-white">Fee</b></p>
+                                        <p>Rs. <?=number_format($course['fee']);?></p>
+                                    </div>
+                                    <!-- features list end -->
+                                </div>
+                                <div class="singlecourseshare">
+                                    <a href=""><i class="fab fa-facebook-square"></i></a>
+                                    <a href=""><i class="fab fa-instagram"></i></a>
+                                    <a href=""><i class="fab fa-twitter"></i></a>
+                                </div>
+
+                            </div>
+
+                            <!-- Teacher section -->
+                            <div class="courseteachersection text-center pl-3 pr-3">
+                                <h4>Course Instructor</h4>
+                                <div class="dividercourset"></div>
+                                <div class="imagenameteacher">
+                                    <img src="<?=app_url()?>/getImage?i=<?=$teacher['id']?>&t=teacher"
+                                         class="img-fluid img-thumbnail">
+                                    <div class="temaintext">
+                                        <h5 class="text-center"><?=$teacher['name'];?></h5>
+                                        <p><?=$teacher['about'];?></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- send suggestion -->
+                            <div class="sendseggistion pl-3 pr-2 " id="leave">
+                                <h4>Leave Us a Message</h4>
+                                <div class="dividercourset"></div>
+                                <div class="alert alert-primary" role="alert" id="success" style="display: none">
+                                    <span id="success_msg"></span>
+                                </div>
+                                <div class="alert alert-danger alert-dismissible" role="alert" id="error" style="display: none">
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                    <span id="error_msg"></span>
+                                </div>
+                                <?=showMsg('feedback');?>
+                                <form action="" method="post" id="suggestion_form">
+                                    <input type="hidden" name="course_id" value="<?=$course['id'];?>">
+                                    <div class="form-row">
+                                        <div class="col-md-12">
+                                            <label for="validationTooltip02"></label>
+                                            <input type="text" class="form-control cformfileds" name="name"
+                                                   id="validationTooltip02" placeholder="Enter Your Name" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-12">
+                                            <label for="validationTooltipUsername"></label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text spanat" id="validationTooltipUsernamePrepend">@</span>
+                                                </div>
+                                                <input type="email" class="form-control cformfileds"
+                                                       id="validationTooltipUsername" name="email"
+                                                       placeholder="Enter Your Email Address"
+                                                       aria-describedby="validationTooltipUsernamePrepend" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-12">
+                                            <label for="validationTooltip01"></label>
+                                            <textarea class="form-control cformfileds" rows="7" id="validationTooltip01"
+                                                      name="feedback_text" placeholder="Enter Your Suggestion"
+                                                      required></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-12">
+                                            <div class="g-recaptcha" data-sitekey="6LcFDsoUAAAAABS5LsQuamDsl66AXUXhy5D_GVoE"></div>
+                                        </div>
+                                    </div>
+                                    <div class="text-left">
+                                        <button class="btn btn-primary buttonofcontact" type="submit">Send Message</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- suggestion end here -->
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+</section>
+<!-- main section end -->
+	
