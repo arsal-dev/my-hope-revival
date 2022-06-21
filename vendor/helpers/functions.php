@@ -121,7 +121,7 @@ function uploadfile($file, $path,
                     $generate_name = true)
 {
     $file_size = $file_size * 1000000; // default is 2 MB
-    $path = $_SERVER['DOCUMENT_ROOT'] . "/" . $path;
+    $path = $_SERVER['DOCUMENT_ROOT'] . "/hoperevival/public/assets/" . $path;
     if($create_path){
         if(!file_exists($path)){
             mkdir($path, 0750, true);
@@ -250,8 +250,8 @@ function Auth($user)
             redirectWithMessage(app_url('admin') . '/login', 'Login required to access this page', 'login', 'error');
         }
     }else if(strtolower($user) == "user"){
-        if (!isset($_SESSION['user_login'])) {
-            redirectWithMessage(app_url() . '/account', 'Login required to access this page', 'login', 'error');
+        if (!isset($_SESSION['email'])) {
+            redirectWithMessage(app_url() . '/login', 'Login required to access this page', 'login', 'error');
         }
     }
 }

@@ -19,21 +19,18 @@ class AdminController {
     }
     public function gallery()
     {
+        $gallery = new \App\Models\Gallery();
+        $gallery = $gallery->getGallery();
         View::render('backend/layouts/header.html', ['title' => 'Hope Revival - Gallery', 'gallery' => 'active']);
-        View::render('backend/gallery.html');
+        View::render('backend/gallery.html', ['gallery' => $gallery]);
         View::render('backend/layouts/footer.html');
     }
-    public function add_gallery()
+    public function clients()
     {
-        View::render('backend/layouts/header.html', ['title' => 'Hope Revival - Add to Gallery', 'gallery' => 'active']);
-        View::render('backend/add-to-gallery.html');
+        $clients = new \App\Models\Client();
+        $clients = $clients->getAllClients();
+        View::render('backend/layouts/header.html', ['title' => 'Hope Revival - clients', 'clients' => 'active']);
+        View::render('backend/clients.html', ['clients' => $clients]);
         View::render('backend/layouts/footer.html');
-    }
-    public function upload_image()
-    {
-        $image = $_FILES['image'];
-        $image_desc = $_POST['desc'];
-
-        
     }
 }

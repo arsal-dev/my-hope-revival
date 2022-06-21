@@ -1,0 +1,18 @@
+.process-parent {
+    text-align: center;
+}
+.process-parent > div {
+    margin: 20px;
+}
+.process-parent > div > button {
+    height: 50px;
+    color: #ff4ea8;
+    border-color: #ff4ea8;
+}
+.process-parent > div > button:hover {
+    background-color: #ff4ea8 !important;
+    border-color: #ff4ea8;
+}
+.form-label {
+    color: #ff4ea8;
+}

@@ -1,0 +1,41 @@
+<section
+  class="hero-wrap hero-wrap-2"
+  style="background-image: url('assets/front-end/images/bg_5.jpg')"
+  data-stellar-background-ratio="0.5"
+>
+  <div class="overlay"></div>
+  <div class="container">
+    <div
+      class="row no-gutters slider-text align-items-end justify-content-center"
+    >
+      <div class="col-md-9 ftco-animate mb-5 text-center">
+        <p class="breadcrumbs mb-0">
+          <span class="mr-2"
+            ><a href="<?=app_url()?>"
+              >Home <i class="fa fa-chevron-right"></i></a
+          ></span>
+          <span>Login <i class="fa fa-chevron-right"></i></span>
+        </p>
+        <h1 class="mb-0 bread">Account</h1>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ftco-section bg-light">
+  <div class="container">
+    <?=showMsg('login')?>
+    <form action="login-post" method="POST">
+        <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" name="email" class="form-control" id="email" placeholder="johndoe@example.com" required>
+        </div>
+        <div class="form-group">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
+        </div>
+        <input type="submit" name="submit" class="btn btn-primary">
+    </form>
+    <p>Do not have an account? <span><a href="./signup">Signup</a></span></p>
+  </div>
+</section>

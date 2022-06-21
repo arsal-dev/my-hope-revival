@@ -1,0 +1,226 @@
+<section
+  class="hero-wrap hero-wrap-2"
+  style="background-image: url('assets/front-end/images/bg_5.jpg')"
+  data-stellar-background-ratio="0.5"
+>
+  <div class="overlay"></div>
+  <div class="container">
+    <div
+      class="row no-gutters slider-text align-items-end justify-content-center"
+    >
+      <div class="col-md-9 ftco-animate mb-5 text-center">
+        <p class="breadcrumbs mb-0">
+          <span class="mr-2"
+            ><a href="<?=app_url()?>"
+              >Home <i class="fa fa-chevron-right"></i></a
+          ></span>
+          <span>Test Process <i class="fa fa-chevron-right"></i></span>
+        </p>
+        <h1 class="mb-0 bread">Process</h1>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ftco-section bg-light">
+  <div class="container" id="selection_parent">
+    <div class="process-parent" id="select-section">
+        <div>
+            <button class="btn btn-outline-primary btn-block" id="first-section">Psycological Therpies</button>
+        </div>
+        <div>
+            <button class="btn btn-outline-primary btn-block" id="second-section">Life Coaching</button>
+        </div>
+    </div>
+    <div class="process-parent d-none" id="first-section-phase-1">
+        <div>
+            <button class="btn btn-outline-primary btn-block first-section-child">Anxity</button>
+        </div>
+        <div>
+            <button class="btn btn-outline-primary btn-block first-section-child">Depression</button>
+        </div>
+        <div>
+            <button class="btn btn-outline-primary btn-block first-section-child">Phobia</button>
+        </div>
+        <div>
+            <button class="btn btn-outline-primary btn-block first-section-child">Stress</button>
+        </div>
+        <div>
+            <button class="btn btn-outline-primary btn-block first-section-child">Anger</button>
+        </div>
+        <div>
+            <button class="btn btn-outline-primary btn-block first-section-child">Grief</button>
+        </div>
+        <div>
+            <button class="btn btn-primary reset">Start Over</button>
+        </div>
+    </div>
+    <!-- session type -->
+    <div class="process-parent d-none" id="session-type">
+        <div>
+            <button class="btn btn-outline-primary btn-block session-type-child">Video Call</button>
+        </div>
+        <div>
+            <button class="btn btn-outline-primary btn-block session-type-child">Voice Call</button>
+        </div>
+        <div>
+            <button class="btn btn-outline-primary btn-block session-type-child">Live Chat</button>
+        </div>
+        <div>
+            <button class="btn btn-primary reset">Start Over</button>
+        </div>
+    </div>
+    <!-- select time for video -->
+    <div class="process-parent d-none" id="video-session">
+        <div>
+            <button class="btn btn-outline-primary btn-block session-price">$10 For 10 Min</button>
+        </div>
+        <div>
+            <button class="btn btn-outline-primary btn-block session-price">$30 For 30 Min</button>
+        </div>
+        <div>
+            <button class="btn btn-outline-primary btn-block session-price">$60 For 60 Min</button>
+        </div>
+        <div>
+            <button class="btn btn-primary reset">Start Over</button>
+        </div>
+    </div>
+    <!-- select time for voice -->
+    <div class="process-parent d-none" id="voice-session">
+        <div>
+            <button class="btn btn-outline-primary btn-block session-price">$5 For 10 Min</button>
+        </div>
+        <div>
+            <button class="btn btn-outline-primary btn-block session-price">$15 For 30 Min</button>
+        </div>
+        <div>
+            <button class="btn btn-outline-primary btn-block session-price">$30 For 60 Min</button>
+        </div>
+        <div>
+            <button class="btn btn-primary reset">Start Over</button>
+        </div>
+    </div>
+    <!-- select time for chat -->
+    <div class="process-parent d-none" id="chat-session">
+        <div>
+            <button class="btn btn-outline-primary btn-block session-price">$5 For 10 Min</button>
+        </div>
+        <div>
+            <button class="btn btn-outline-primary btn-block session-price">$15 For 30 Min</button>
+        </div>
+        <div>
+            <button class="btn btn-outline-primary btn-block session-price">$40 For 60 Min</button>
+        </div>
+        <div>
+            <button class="btn btn-primary reset">Start Over</button>
+        </div>
+    </div>
+  </div>
+</section>
+
+<script>
+    // first section
+    let firstPhase1 = document.getElementById('first-section-phase-1');
+    let sessionType = document.getElementById('session-type');
+    let selectSection = document.getElementById('select-section');
+    let firstSection = document.getElementById('first-section');
+
+
+    let videoSession = document.getElementById('video-session');
+    let voiceSession = document.getElementById('voice-session');
+    let chatSession = document.getElementById('chat-session');
+    // check if selection is done
+    if(sessionStorage.getItem('selectionList')){
+        selectSection.classList.add('d-none');
+        firstPhase1.classList.remove('d-none');
+    }
+
+    SelectSectionPhase();
+    function SelectSectionPhase(){
+        firstSection.addEventListener('click', function(){
+            sessionStorage.setItem('selectionList', this.innerHTML);
+            selectSection.classList.add('d-none');
+            firstPhase1.classList.remove('d-none');
+        });
+    }
+    // first section 2nd part
+    let firstChild = document.querySelectorAll('.first-section-child');
+    for(let i = 0; i < firstChild.length; i++){
+        firstChild[i].addEventListener('click', function(){
+            sessionStorage.setItem('therapy', this.innerHTML);
+            firstPhase1.classList.add('d-none');
+            sessionType.classList.remove('d-none');
+        });
+    }
+
+    // check if second screen is visible
+    if(sessionStorage.getItem('therapy')){
+        firstPhase1.classList.add('d-none');
+        sessionType.classList.remove('d-none');
+    }
+
+
+    // session type
+    let sessionTypeChild = document.querySelectorAll('.session-type-child');
+    for(let j = 0; j < sessionTypeChild.length; j++){
+        sessionTypeChild[j].addEventListener('click', function(){
+            sessionStorage.setItem('sessionType', this.innerHTML);
+            sessionType.classList.add('d-none');
+            if(this.innerHTML == "Video Call") {
+                videoSession.classList.remove('d-none');
+            }
+            else if(this.innerHTML == "Voice Call"){
+                voiceSession.classList.remove('d-none');
+            }
+            else if(this.innerHTML == "Live Chat"){
+                chatSession.classList.remove('d-none');
+            }
+        });
+    }
+
+    // check if session type should be visible
+    if(sessionStorage.getItem('sessionType')){
+        sessionType.classList.add('d-none');
+    }
+    if(sessionStorage.getItem('sessionType') == 'Video Call'){
+        videoSession.classList.remove('d-none');
+    }
+    else if(sessionStorage.getItem('sessionType') == 'Voice Call'){
+            voiceSession.classList.remove('d-none');
+    }
+    else if(sessionStorage.getItem('sessionType') == 'Live Chat'){
+        chatSession.classList.remove('d-none');
+    }
+
+    // session price set
+    let sessionPrice = document.querySelectorAll('.session-price');
+    for(let p = 0; p < sessionPrice.length; p++){
+        sessionPrice[p].addEventListener('click', function() {
+            sessionStorage.setItem("sessionPrice", this.innerHTML.split(' ')[0]);
+            let selection = sessionStorage.getItem('selectionList');
+            let sessionType = sessionStorage.getItem('sessionType');
+            let therapy = sessionStorage.getItem('therapy');
+            let sessionPrice = sessionStorage.getItem('sessionPrice');
+
+            let obj = { selection, sessionType, therapy, sessionPrice };
+            sendData(obj);
+        });
+
+        async function sendData(obj){
+            let selection_parent = document.getElementById('selection_parent');
+            selection_parent.innerHTML = "<h1>Redirecting....</h1>";
+            let response = await fetch('set-session', {
+                method: "POST",
+                body: JSON.stringify(obj)
+            })
+            let res = await response.text();
+            res = JSON.parse(res);
+            if(res.code == 200){
+                location.replace('signup?session=true');
+            }
+            else if(res.code == 202){
+                location.replace('signup?session=true');
+            }
+        }
+    }
+</script>

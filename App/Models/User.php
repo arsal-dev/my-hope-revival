@@ -39,6 +39,13 @@ class User extends \Core\Model
         return $stmt->fetch();
     }
 
+    public function getUserByName($username){
+        $db = static::getDB();
+        $stmt = $db->prepare("SELECT * FROM users WHERE username = :username");
+        $stmt->execute([':username'=>$username]);
+        return $stmt->fetch();
+    }
+
     public function change_password($data){
         $db = static::getDB();
         $stmt = $db->prepare('UPDATE users SET password = :password WHERE id = :id');
